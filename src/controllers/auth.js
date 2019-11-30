@@ -10,7 +10,7 @@ function register(req, res) {
     })
 
     authValidator.registerValidator(req, res, () => {
-        let passwordHashed = res.locals.hash
+        const passwordHashed = res.locals.hash
         user.password = passwordHashed
 
         user.save((saveErr, savedUser) => {

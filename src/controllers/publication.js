@@ -1,5 +1,18 @@
 const Publication = require('../models/publication')
 
+function createPublication(req, res) {
+    const publication = new Publication({
+        question: req.body._question
+    })
+
+    publication.save((saveErr, publicationSaved) => {
+        if (saveErr)
+            res.status(500).send({ message: `Error: ${saveErr}` })
+        
+        res.status(201).send({ publication : publicationSaved })
+    })
+}
+
 function getPublications(req, res) {
     Publication.find().exec((err, publications) => {
         if (err)
@@ -28,11 +41,13 @@ function getPublicationById(req, res) {
 
 function updatePublication(req, res) {
     const publicationId = req.params.publicationId
-    const update = req.body
+    const publicationToupdate = req.body
 
-    Publication.findByIdAndUpdate(publicationId, update, (err, publicationUpdated) => {
-        if (err) 
-            res.status(500).send({ message: `error updating publication: ${err}` })
+    Publication.findByIdAndUpdate(publicationId, publicationToupdate, 
+        (err, publicationUpdated) => {
+            if (err) 
+                res.status(500)
+                    .send({ message: `error updating publication: ${err}` })
 
         res.status(200).send({ publication: publicationUpdated })
     })
@@ -45,16 +60,18 @@ function deletePublication(req, res) {
         if (err) 
             res.status(500).send({ message: `error deleting Publication: ${err}` })
 
-            publication.remove(err => {
-            if (err) 
-                res.status(500).send({ message: `error deleting publication: ${err}` })
-            
+        publication.remove(err => {
+            if (err) {
+                res.status(500)
+                    .send({ message: `error deleting publication: ${err}` })
+            }
             res.status(200).send({ message: 'the publication has been deleted' })
         })
     })
 }
 
 module.exports = {
+    createPublication,
     getPublications,
     updatePublication,
     getPublicationById,
