@@ -2,7 +2,7 @@ const Publication = require('../models/publication')
 
 function createPublication(req, res) {
     const publication = new Publication({
-        question: req.body._question
+        question: req.body.question
     })
 
     publication.save((saveErr, publicationSaved) => {
