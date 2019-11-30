@@ -2,6 +2,7 @@ const Publication = require('../models/publication')
 
 function createPublication(req, res) {
     const publication = new Publication({
+        title: req.body.title,
         question: req.body.question
     })
 
