@@ -23,5 +23,5 @@ mongoose.connect(`mongodb://${dbIp}:${dbPort}/${dbDatabase}`, { useNewUrlParser:
 
 app.listen(apiPort, () => {
     console.log('\nMODE:', chalk.bgCyan(config.mode))
-    console.log('API lvl-art listen on', chalk.bgCyan(`http://${apiIp}:${apiPort}\n`))
+    console.log('API QuizApi listen on', chalk.bgCyan(`http://${apiIp}:${apiPort}\n`))
 })

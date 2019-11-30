@@ -1,6 +1,6 @@
 const Router = require('express')
 
 const router = Router()
-const lvlartApiPath = '/quiz-api'
+const quizApiPath = '/quiz-api'
 
 module.exports = router
