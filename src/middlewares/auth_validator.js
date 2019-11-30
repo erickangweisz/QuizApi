@@ -46,8 +46,8 @@ function registerValidator(req, res, next) {
 }
 
 function loginValidator(req, res, next) {
-    let email = req.body['email']
-    let password = req.body['password']
+    const email = req.body['email']
+    const password = req.body['password']
 
     if (!validator.isEmail(email)) {
         return res.status(400).send({
