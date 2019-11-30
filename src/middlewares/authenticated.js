@@ -1,8 +1,12 @@
-import jwt from 'jwt-simple'
-import moment from 'moment'
-import config from '../config'
+const jwt = require('jwt-simple')
+const moment = require('moment')
+const config = ('../config')
 
-export function ensureAuth(req, res, next) {
+const Auth = {
+    ensureAuth
+}
+
+function ensureAuth(req, res, next) {
     if (!req.headers.authorization)
         return res.status(403).send({
             message: `The request doesn't the authentication header`
@@ -20,3 +24,5 @@ export function ensureAuth(req, res, next) {
     req.user = payload
     next()
 }
+
+module.exports = Auth
