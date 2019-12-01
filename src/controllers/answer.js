@@ -3,7 +3,7 @@ const Answer = require('../models/answer')
 function createAnswer(req, res) {
     const answer = new Answer({
         description: req.body.description,
-        idPublishing: req.body.idPublishing
+        idPublication: req.body.idPublication
     })
 
     answer.save((saveErr, answerSaved) => {
