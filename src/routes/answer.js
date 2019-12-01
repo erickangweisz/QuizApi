@@ -11,7 +11,7 @@ router.post(
 )
 router.get(
     '/answers/:publicationId', 
-    answerController.getAnswerByPublicationId
+    answerController.getAnswersByPublicationId
 )
 router.delete(
     '/answer/:answerId', 

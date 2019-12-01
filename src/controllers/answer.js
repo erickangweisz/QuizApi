@@ -14,7 +14,7 @@ function createAnswer(req, res) {
     })
 }
 
-function getAnswerByPublicationId(req, res) {
+function getAnswersByPublicationId(req, res) {
     let publicationId = req.params.publicationId
 
     Answer.find({ _id: publicationId }, (err, answers) => {
@@ -46,6 +46,6 @@ function deleteAnswer(req, res) {
 
 module.exports = {
     createAnswer,
-    getAnswerByPublicationId,
+    getAnswersByPublicationId,
     deleteAnswer
 }
