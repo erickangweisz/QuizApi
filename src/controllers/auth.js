@@ -7,7 +7,7 @@ function register(req, res) {
         email: req.body.email,
         password: req.body.password,
         username: req.body.username,
-        role: req.body.role
+        role: 'user'
     })
 
     authValidator.registerValidator(req, res, () => {
