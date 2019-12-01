@@ -59,13 +59,19 @@ function loginValidator(req, res, next) {
         })
     } else {
         User.findOne({ email: email.toLowerCase().trim() }, (err, user) => {
-            bcrypt.compare(password, user.password, (passErr, check) => {
-                if (check) {
-                   next()
-                } else {
-                    res.status(404).send({ message: `password is not correct` })
-                }
-            })
+            if (user === null) {
+                return res.status(400).send({ 
+                    message: `email not exist`
+                })
+            } else {
+                bcrypt.compare(password, user.password, (passErr, check) => {
+                    if (check) {
+                    next()
+                    } else {
+                        res.status(404).send({ message: `password is not correct` })
+                    }
+                })
+            }
         })
     }
 }
