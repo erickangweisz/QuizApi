@@ -18,7 +18,7 @@ function register(req, res) {
             if (saveErr)
                 res.status(500).send({ message: `Error: ${saveErr}` })
             
-            res.status(201).send({ token: jwt.createToken(savedUser) })
+            res.status(201).send({ user: savedUser })
         })
     })
 }
