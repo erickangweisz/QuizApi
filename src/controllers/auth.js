@@ -5,6 +5,7 @@ const authValidator = require('../middlewares/auth_validator')
 function register(req, res) {
     const user = new User({
         email: req.body.email,
+        password: req.body.password,
         username: req.body.username,
         role: req.body.role
     })

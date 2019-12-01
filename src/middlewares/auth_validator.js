@@ -9,9 +9,9 @@ const authValidator = {
 }
 
 function registerValidator(req, res, next) {
-    const email = req.body._email
-    const password = req.body._password
-    const username = req.body._username
+    const email = req.body.email
+    const password = req.body.password
+    const username = req.body.username
 
     if (!validator.isEmail(email)) {
         return res.status(400).send({
